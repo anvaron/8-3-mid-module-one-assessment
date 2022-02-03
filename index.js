@@ -1,7 +1,8 @@
 /*
   You may use the following animals array to test your functions inside of this file. This is the same array of animals that is used in the tests.
   
-  To run this file, remember that you can run `node index.js` from the command line. You will need to be in the directory where the `index.js` file is kept for the above command to work.
+  To run this file, remember that you can run `node index.js` from the command line. You will need to be in the directory where the `index.js` file is kept 
+  for the above command to work.
 
   Finally, remember that in order for you to see output on the command line, you must log something out.
 */
@@ -26,7 +27,15 @@ const animals = [
  * getTotalCount(animals); //> 28
  * getTotalCount([]); //> 0 // returns 0 if the input array is empty
  */
-function getTotalCount(animals) {}
+function getTotalCount(animals) {
+  let result = 0;
+  if(animals.length !== 0){
+    for(let i =0; i < animals.length; i++){
+      result += animals[i].count;
+    }
+  }
+  return result;
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -40,7 +49,15 @@ function getTotalCount(animals) {}
  * getAllKinds(animals); //> ["Pig", "Cow", "Chicken", "Horse", "Dog", "Cat"]
  * getAllKinds([]); //> [] // returns empty array if input array is empty
  */
-function getAllKinds(animals) {}
+function getAllKinds(animals) {
+  let result = [];
+  if(animals.length !== 0){
+    for(let i =0; i < animals.length; i++){
+      result.push(animals[i].kind);
+    }
+  }
+  return result;  
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -59,7 +76,17 @@ function getAllKinds(animals) {}
   ];
  * filterByCountMinimum([], 3); //> [] // returns empty array if input array is empty
  */
-function filterByCountMinimum(animals, minimum) {}
+function filterByCountMinimum(animals, minimum) {
+  let result = [];
+  if(animals.length !== 0){
+    for(let i =0; i < animals.length; i++){
+      if(animals[i].count >= minimum){
+        result.push(animals[i]);
+      }
+    }
+  }
+  return result;
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -73,7 +100,26 @@ function filterByCountMinimum(animals, minimum) {}
  * getMostCommonAnimal(animals); //> { kind: "Chicken", count: 11 }
  * getMostCommonAnimal([]); //> null // returns null if the input is empty
  */
-function getMostCommonAnimal(animals) {}
+function getMostCommonAnimal(animals) {
+  let result = {}, aux, temp =[], num = 0,
+      y = 0;
+  // >> Looping througt the array >> 
+  if(animals.length !== 0){
+    for(let i =1; i < animals.length; i++){
+      num = animals[0].count;
+      if(animals[i].count > num){
+        num = animals[i].count;
+      }
+    }
+    
+    result.kind = animals[num].kind
+    result.count = animals[num].count
+  }
+  else{result = null;}
+  return result;  
+}
+
+console.log(getMostCommonAnimal(animals));
 
 // Do not change anything below this line.
 module.exports = {
